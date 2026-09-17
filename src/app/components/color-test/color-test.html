@@ -1,0 +1,23 @@
+<div class="p-8 bg-surface min-h-screen">
+  <h1 class="text-2xl font-bold text-ink mb-6">Theme Color Reference</h1>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-10">
+    @for (color of colors; track color.name) {
+      <div class="rounded-lg overflow-hidden border border-ink/10">
+        <div class="h-20" [style.background]="'var(' + color.cssVar + ')'"></div>
+        <div class="p-2 bg-surface-alt">
+          <p class="font-mono text-sm text-ink">--{{ color.name }}</p>
+          <p class="font-mono text-xs text-ink/60">{{ color.hex }}</p>
+        </div>
+      </div>
+    }
+  </div>
+
+  <h2 class="text-xl font-semibold text-ink mb-4">Gradient Examples</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div class="h-24 rounded-lg bg-gradient-to-r from-brand to-accent"></div>
+    <div class="h-24 rounded-lg bg-gradient-to-r from-brand to-brand-dark"></div>
+    <div class="h-24 rounded-lg bg-gradient-to-r from-surface to-surface-alt border border-ink/10"></div>
+    <div class="h-24 rounded-lg bg-gradient-to-br from-sage to-accent"></div>
+  </div>
+</div>
