@@ -2,3 +2,27 @@
 
 @import 'tailwindcss';
 @import 'animate.css';
+
+@theme {
+  --color-brand: #B5603A;
+  --color-brand-dark: #8A4429;
+  --color-accent: #C99A3E;
+  --color-sage: #7A8B6F;
+  --color-surface: #FAF3E9;
+  --color-surface-alt: #F0E4D3;
+  --color-ink: #3A2C22;
+  --color-paper: #FDF8F1;
+  --color-paper-dark: #1A120B;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-brand: #D97D52;
+    --color-brand-dark: #9d512d;
+    --color-accent: #E0B457;
+    --color-sage: #93A686;
+    --color-surface: #211811;
+    --color-surface-alt: #2B2118;
+    --color-ink: #EDE1D0;
+  }
+}
