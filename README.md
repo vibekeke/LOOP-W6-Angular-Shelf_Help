@@ -28,7 +28,7 @@ flowchart TD
     Login --> LoginCard
 
     BookCatalogue --> BookCatalogueHeading
-    BookCatalogue --> BookCatalogueCard
+    BookCatalogue --> BookCard
 
     ReadingList --> ReadingListHeading
     ReadingList --> ReadListEntry
