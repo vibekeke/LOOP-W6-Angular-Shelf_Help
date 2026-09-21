@@ -1,31 +1,30 @@
 
 
 <!-- Found a fun template at https://hyperui.dev/components/marketing/cards/ -->
-<a href="#" routerLink="/book-details/1" class="group relative block h-64 sm:h-80 lg:h-96">
+<a href="#" routerLink="/book-details/1" class="group" >
   <div
-    class="relative flex h-full transform items-end overflow-hidden bg-white transition-transform group-hover:-translate-x-2 group-hover:-translate-y-2"
+    class="relative overflow-hidden bg-sage shadow-md"
   >
-  
     <!-- No hover -->
     <div
-      class="flex h-full flex-col transition-opacity group-hover:absolute group-hover:opacity-0 shadow-md"
+      class="flex h-full flex-col transition-opacity shadow-md"
     >
         <img
             alt="Book cover"
             src="kappn-photo.png"
-            class="w-full flex-1 object-cover"
+            class="w-full min-h-0 flex-1 object-cover"
         />
 
         <div class="px-2 py-2">
-            <h2 class="mt-5 text-xl font-medium sm:text-2xl">Go around the world</h2>
+            <h2 class="m-3 text-xl font-medium line-clamp-2">Go around the world and fight the demons hell yeah</h2>
         </div>
     </div>
 
     <!-- Hover -->
     <div
-      class="absolute px-4 py-4 opacity-0 transition-opacity group-hover:relative group-hover:opacity-100 sm:p-6 lg:p-8"
+      class="absolute inset-0 bg-sage px-4 py-4 opacity-0 transition-opacity group-hover:opacity-100"
     >
-      <h3 class="mt-4 text-xl font-medium sm:text-2xl">Go around the world</h3>
+      <h3 class="mt-4 text-xl font-medium">Go around the world and fight the demons hell yeah</h3>
 
       <p class="mt-4 text-sm sm:text-base">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, praesentium

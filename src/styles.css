@@ -4,15 +4,13 @@
 @import 'animate.css';
 
 @theme {
-  --color-brand: #CB612C;
-  --color-brand-dark: #7a3517;
-  --color-accent: #DDA23E;
-  --color-sage: #7D9660;
-  --color-surface: #FBF2E3;
-  --color-surface-alt: #F3E3C9;
-  --color-ink: #3A2C22;
-  --color-paper: #FDF8F1;
-  --color-paper-dark: #1A120B;
+  --color-brand: #3E9463;
+  --color-brand-dark: #266B42;
+  --color-accent: #7BAABF;
+  --color-sage: #FFFFFF;
+  --color-surface: #F0F5F3;
+  --color-surface-alt: #E2ECE7;
+  --color-ink: #1A2C26;
 
   --font-heading: "Idiqlat", serif;
   --font-body: "Nunito Sans", sans-serif;
@@ -20,13 +18,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-brand: #E77B46;
-    --color-brand-dark: #AB5327;
-    --color-accent: #F0BB5B;
-    --color-sage: #98B47A;
-    --color-surface: #23180D;
-    --color-surface-alt: #2D2116;
-    --color-ink: #EDE1D0;
+    --color-brand: #5EC48A;
+    --color-brand-dark: #38895C;
+    --color-accent: #92C0D6;
+    --color-sage: #000000;
+    --color-surface: #0F1B17;
+    --color-surface-alt: #182720;
+    --color-ink: #D6EBE1;
   }
 }
 
