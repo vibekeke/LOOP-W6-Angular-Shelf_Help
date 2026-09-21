@@ -8,23 +8,29 @@
             <h1 class="link-underline pt-1 font-bold text-2xl tracking-[0.3em] text-ink">shelfHelp</h1>
             </a>
         </div>
-        <div class="flex items-center gap-8 px-3 py-4">
-            <!-- navigator links with cute little symbols -->
-            <a class="link-underline nav-link flex items-center gap-1.5" routerLink="/book-catalogue">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                    <path d="M12 5v16" />
-                    <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" />
-                </svg>
-                Catalogue
-            </a>
-            <a class="link-underline nav-link flex items-center gap-1.5" routerLink="reading-list">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
-                        <circle cx="12" cy="8" r="4" />
-                        <path d="M4 20c0-4 4-6 8-6s8 2 8 6" />
+        @if (auth.isLoggedIn()) {
+            <div class="flex items-center gap-8 px-3 py-4">
+                <!-- navigator links with cute little symbols -->
+                <a class="link-underline nav-link flex items-center gap-1.5" routerLink="/book-catalogue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+                        <path d="M12 5v16" />
+                        <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" />
                     </svg>
-                Reading List
+                    Catalogue
+                </a>
+                <a class="link-underline nav-link flex items-center gap-1.5" routerLink="reading-list">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                            <circle cx="12" cy="8" r="4" />
+                            <path d="M4 20c0-4 4-6 8-6s8 2 8 6" />
+                        </svg>
+                    Reading List
+                </a>
+                <button class="link-underline nav-link">Log out</button>
+            </div>
+        } @else {
+            <a class="link-underline nav-link flex items-center gap-1.5" routerLink="login">
+                Log in
             </a>
-            <button class="link-underline nav-link">Log out</button>
-        </div>
+        }
     </div>
 </div>
