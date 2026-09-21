@@ -25,11 +25,14 @@
                         </svg>
                     Reading List
                 </a>
-                <button class="link-underline nav-link">Log out</button>
+                <button class="link-underline nav-link" (click)="onLogout()">Log out</button>
             </div>
         } @else {
             <a class="link-underline nav-link flex items-center gap-1.5" routerLink="login">
                 Log in
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
+                </svg>
             </a>
         }
     </div>

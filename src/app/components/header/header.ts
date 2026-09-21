@@ -10,4 +10,8 @@ import { Auth } from '../../services/auth';
 })
 export class Header {
   protected readonly auth = inject(Auth);
+
+  onLogout() {
+    this.auth.logout();
+  }
 }
