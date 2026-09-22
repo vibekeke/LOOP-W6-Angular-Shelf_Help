@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { UserService } from '../../services/user-service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { finalize } from 'rxjs';
 
 @Component({
   imports: [FormsModule],
@@ -14,14 +15,19 @@ export class LoginCard {
   private readonly router = inject(Router);
 
   protected readonly username = signal('');
+  protected readonly isLoading = signal(false);
 
   onSubmit() {
     const name = this.username().trim();
-    if (!name) return;
+    if (!name || this.isLoading()) return;
 
-    //TODO: Backend stuff
+    this.isLoading.set(true);
 
-    this.userService.login(name);
-    this.router.navigateByUrl('/');
+    this.userService.login(name).pipe(
+      finalize(()=> this.isLoading.set(false))
+    ).subscribe({
+      next: () => this.router.navigateByUrl('/'),
+      error: (err) => console.error('Login failed', err), //TODO: add explanation to frontend.
+    });
   }
 }
