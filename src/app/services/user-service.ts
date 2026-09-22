@@ -13,8 +13,8 @@ export interface User {
 
 @Injectable({providedIn: 'root'})
 export class UserService {
-    private readonly _user = signal<User | null>(this.getStoredUser());
     private readonly http = inject(HttpClient);
+    private readonly _user = signal<User | null>(this.getStoredUser());
     
     readonly isLoggedIn = computed(() => this._user() !== null);
 

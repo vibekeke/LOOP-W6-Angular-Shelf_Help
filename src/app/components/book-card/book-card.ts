@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Book } from '../../services/book-service';
 
 @Component({
   imports: [RouterLink],
@@ -7,4 +8,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './book-card.css',
   templateUrl: './book-card.html',
 })
-export class BookCard {}
+export class BookCard {
+  readonly book = input.required<Book>(); 
+
+  //TODO: Ask userService if book exists in the collection :))
+}
