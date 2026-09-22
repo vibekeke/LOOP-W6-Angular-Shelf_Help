@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './login-card.html',
 })
 export class LoginCard {
-  private readonly auth = inject(UserService);
+  private readonly userService = inject(UserService);
   private readonly router = inject(Router);
 
   protected readonly username = signal('');
@@ -21,7 +21,7 @@ export class LoginCard {
 
     //TODO: Backend stuff
 
-    this.auth.login(name);
+    this.userService.login(name);
     this.router.navigateByUrl('/');
   }
 }

@@ -9,9 +9,9 @@ import { UserService } from '../../services/user-service';
   templateUrl: './header.html',
 })
 export class Header {
-  protected readonly auth = inject(UserService);
+  protected readonly userService = inject(UserService);
 
   onLogout() {
-    this.auth.logout();
+    this.userService.logout();
   }
 }
