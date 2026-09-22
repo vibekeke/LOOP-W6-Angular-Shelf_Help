@@ -5,7 +5,7 @@ export interface User {
 }
 
 @Injectable({providedIn: 'root'})
-export class Auth {
+export class UserService {
     private readonly _user = signal<User | null>(null);
     
     readonly user = this._user.asReadonly();

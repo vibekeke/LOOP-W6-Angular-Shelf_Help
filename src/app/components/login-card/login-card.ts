@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { Auth } from '../../services/auth';
+import { UserService } from '../../services/user-service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './login-card.html',
 })
 export class LoginCard {
-  private readonly auth = inject(Auth);
+  private readonly auth = inject(UserService);
   private readonly router = inject(Router);
 
   protected readonly username = signal('');

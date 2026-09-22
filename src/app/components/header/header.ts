@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Auth } from '../../services/auth';
+import { UserService } from '../../services/user-service';
 
 @Component({
   imports: [RouterLink],
@@ -9,7 +9,7 @@ import { Auth } from '../../services/auth';
   templateUrl: './header.html',
 })
 export class Header {
-  protected readonly auth = inject(Auth);
+  protected readonly auth = inject(UserService);
 
   onLogout() {
     this.auth.logout();
