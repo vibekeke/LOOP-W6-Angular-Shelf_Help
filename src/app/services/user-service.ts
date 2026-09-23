@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, signal } from "@angular/core";
 import { HttpClient} from '@angular/common/http';
-import { Observable, of, switchMap, tap, throwError, } from "rxjs";
+import { EMPTY, Observable, of, switchMap, tap, throwError, } from "rxjs";
 
 const USER_URL = "https://w5-frontend-assignment-api.onrender.com/shelf_help_users";
 
@@ -15,13 +15,11 @@ export interface User {
 export class UserService {
     private readonly http = inject(HttpClient);
     private readonly _user = signal<User | null>(this.getStoredUser());
-    
-    readonly isLoggedIn = computed(() => this._user() !== null);
 
+    readonly isLoggedIn = computed(() => this._user() !== null);
     readonly user = this._user.asReadonly();
 
     login(username: string) : Observable<User> {
-
         const trimmed = username.trim();
         if (!trimmed) {
             return throwError(() => new Error('Username cannot be empty.'));
@@ -31,7 +29,6 @@ export class UserService {
             return throwError(() => new Error('Username cannot contain spaces.'));
         }
 
-
         return this.http.get<User[]>(USER_URL).pipe(
             switchMap(users => {
                 const existing = users.find(u => u.username.toLowerCase() === username.toLowerCase());
@@ -40,16 +37,54 @@ export class UserService {
                     ? of(existing)      //of(User) gives Observable<User>
                     : this.http.post<User>(USER_URL, {username, collection: []});
             }),
-            tap(user => {
-                this._user.set(user)
-                localStorage.setItem('user', JSON.stringify(user))
-            }),
+            tap( user => this.setUser(user))
         );
     }
     
     logout() {
         localStorage.removeItem('user');
         this._user.set(null);
+    }
+
+    addToCollection(bookId: number) : Observable<User> {
+        const currentUser = this._user();
+        if (!currentUser) {
+            return throwError(() => new Error('Not logged in'))
+        }
+
+        if (currentUser.collection.includes(bookId)) {
+            return EMPTY;
+        }
+
+        const updated = [...currentUser.collection, bookId]
+        
+        return this.http.patch<User>(`${USER_URL}/${currentUser.id}`, {collection: updated}).pipe(
+            tap( user => this.setUser(user))
+        );
+    }
+
+    deleteFromCollection(bookId: number) : Observable<User> {
+        const currentUser = this._user();
+        if (!currentUser) {
+            return throwError(() => new Error('Not logged in'))
+        }
+
+        if (!currentUser.collection.includes(bookId)) {
+            return EMPTY;
+        }
+
+        const updated = currentUser.collection.filter(item => item !== bookId)
+
+        return this.http.patch<User>(`${USER_URL}/${currentUser.id}`, {collection: updated}).pipe(
+            tap( user => this.setUser(user))
+        );
+    }
+
+    // --- HELPERS ----
+    private setUser(user: User) {
+        this._user.set(user)
+        localStorage.setItem('user', JSON.stringify(user))
+
     }
 
     //LOCALSTORAGE HELPERS
