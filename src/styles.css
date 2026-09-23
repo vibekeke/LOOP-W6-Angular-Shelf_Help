@@ -7,10 +7,11 @@
   --color-brand: #3E9463;
   --color-brand-dark: #266B42;
   --color-accent: #7BAABF;
-  --color-sage: #FFFFFF;
+  --color-sage: #dfffcc;
   --color-surface: #F0F5F3;
   --color-surface-alt: #E2ECE7;
   --color-ink: #1A2C26;
+  --color-paper: #FFFFFF;
 
   --font-heading: "Idiqlat", serif;
   --font-body: "Nunito Sans", sans-serif;
@@ -21,10 +22,11 @@
     --color-brand: #5EC48A;
     --color-brand-dark: #38895C;
     --color-accent: #92C0D6;
-    --color-sage: #000000;
+    --color-sage: #dfffcc;
     --color-surface: #0F1B17;
     --color-surface-alt: #182720;
     --color-ink: #D6EBE1;
+    --color-paper: #000000;
   }
 }
 
