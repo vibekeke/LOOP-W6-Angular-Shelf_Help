@@ -19,13 +19,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-brand: #5EC48A;
-    --color-brand-dark: #38895C;
+    --color-brand: #358c76;
+    --color-brand-dark: #34786a;
     --color-accent: #92C0D6;
-    --color-sage: #dfffcc;
+    --color-sage: #77b88f;
     --color-surface: #0F1B17;
     --color-surface-alt: #182720;
-    --color-ink: #D6EBE1;
+    --color-ink: #eafcf3;
     --color-paper: #000000;
   }
 }
@@ -40,3 +40,10 @@ h3 { font-size: var(--text-2xl); font-weight: 600; }
 h4 { font-size: var(--text-xl); font-weight: 600; }
 h5 { font-size: var(--text-lg); font-weight: 600; }
 h6 { font-size: var(--text-base); font-weight: 600; }
+
+html, body{
+  margin: 0;
+  min-height: 100%;
+  background-color: var(--color-surface);
+}
+ 

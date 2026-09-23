@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../services/user-service';
 
 @Component({
@@ -10,8 +10,10 @@ import { UserService } from '../../services/user-service';
 })
 export class Header {
   protected readonly userService = inject(UserService);
+  private readonly router = inject(Router);
 
   onLogout() {
     this.userService.logout();
+    this.router.navigateByUrl('/');
   }
 }
