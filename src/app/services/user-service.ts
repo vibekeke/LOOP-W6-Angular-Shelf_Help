@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, signal } from "@angular/core";
-import { HttpClient} from '@angular/common/http';
-import { EMPTY, Observable, of, switchMap, tap, throwError, } from "rxjs";
+import { HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { catchError, EMPTY, Observable, of, switchMap, tap, throwError, } from "rxjs";
 
 const USER_URL = "https://w5-frontend-assignment-api.onrender.com/shelf_help_users";
 
@@ -31,11 +31,11 @@ export class UserService {
 
         return this.http.get<User[]>(USER_URL).pipe(
             switchMap(users => {
-                const existing = users.find(u => u.username.toLowerCase() === username.toLowerCase());
+                const existing = users.find(u => u.username.toLowerCase() === trimmed.toLowerCase());
                                 //^input users:User[], output existing = User | underfined
                 return existing 
                     ? of(existing)      //of(User) gives Observable<User>
-                    : this.http.post<User>(USER_URL, {username, collection: []});
+                    : this.createUser(trimmed, [])
             }),
             tap( user => this.setUser(user))
         );
@@ -58,9 +58,7 @@ export class UserService {
 
         const updated = [...currentUser.collection, bookId]
         
-        return this.http.patch<User>(`${USER_URL}/${currentUser.id}`, {collection: updated}).pipe(
-            tap( user => this.setUser(user))
-        );
+        return this.saveCollection(currentUser, updated);
     }
 
     deleteFromCollection(bookId: number) : Observable<User> {
@@ -74,10 +72,23 @@ export class UserService {
         }
 
         const updated = currentUser.collection.filter(item => item !== bookId)
+        return this.saveCollection(currentUser, updated)
+    }
 
-        return this.http.patch<User>(`${USER_URL}/${currentUser.id}`, {collection: updated}).pipe(
+    private saveCollection(user: User, collection: number[]) : Observable<User> {
+        return this.http.patch<User>(`${USER_URL}/${user.id}`, {collection}).pipe(
+            //If user no longer exists in database (because Render killed the server) create new user.
+            catchError((err: HttpErrorResponse) =>
+                err.status === 404
+                    ? this.createUser(user.username, collection)
+                    : throwError(() => err)
+        ),    
             tap( user => this.setUser(user))
         );
+    }
+
+    private createUser(username:string, collection: number[]) : Observable<User> {
+        return this.http.post<User>(USER_URL, {username, collection});
     }
 
     // --- HELPERS ----
