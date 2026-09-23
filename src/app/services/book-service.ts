@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, tap } from "rxjs";
+import { Observable, of, tap } from "rxjs";
 
 const BOOKS_URL = "https://w5-frontend-assignment-api.onrender.com/shelf_help_books";
 
@@ -25,5 +25,12 @@ export class BookService {
         return this.http.get<Book[]>(BOOKS_URL).pipe(
             tap(books => this._books.set(books))
         )
+    }
+
+    getBook(id: string) : Observable<Book> {
+        const existing = this._books().find(book => book.id.toString() === id);
+        return existing
+            ? of(existing)
+            : this.http.get<Book>(`${BOOKS_URL}/${id}`);
     }
 }
