@@ -1,1 +1,26 @@
-<p>book-list-entry works!</p>
+
+
+<div class="flex flex-row bg-paper h-40 max-w-200 shadow-md">
+
+    <img 
+    [alt]="book().title"
+    [src]="book().coverImg"
+    loading="lazy"
+    class="h-full w-auto object-cover shrink-0"
+    />
+
+    <div class="text-start min-w-0 flex-1 flex flex-col p-4 md:p-8">
+        <h6>{{book().title}}</h6>
+        <p>Author: {{book().author}}</p>
+        <div class="mt-auto shrink-0 flex justify-between items-center">
+            <a [routerLink]="['/book-details', book().id]" class="relative font-bold text-md 
+                after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:bg-current
+                after:origin-right after:scale-x-0 after:transition-transform after:duration-250
+                hover:after:origin-left hover:after:scale-x-100">
+            Read more</a>
+              
+        <app-collection-button [book]="book()" variant="remove" />
+    </div>
+    </div>
+
+</div>
