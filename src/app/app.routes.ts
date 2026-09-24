@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 import { ColorTest } from './components/dev/color-test/color-test';
-import { Landing } from './pages/landing/landing';
-import { Login } from './pages/login/login';
-import { BookCatalogue } from './pages/book-catalogue/book-catalogue';
-import { ReadingList } from './pages/reading-list/reading-list';
-import { BookDetails } from './pages/book-details/book-details';
+import { Landing } from './components/pages/landing/landing';
+import { Login } from './components/pages/login/login';
+import { BookCatalogue } from './components/pages/book-catalogue/book-catalogue';
+import { ReadingList } from './components/pages/reading-list/reading-list';
+import { BookDetails } from './components/pages/book-details/book-details';
 
 export const routes: Routes = [
   { path: '', component: Landing },
