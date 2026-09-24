@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoginCard } from '../../components/login-card/login-card';
+import { LoginCard } from '../../login-card/login-card';
 
 @Component({
   imports: [LoginCard],

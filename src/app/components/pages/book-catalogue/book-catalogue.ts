@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { BookCard } from '../../components/book-card/book-card';
-import { BookService } from '../../services/book-service';
+import { BookCard } from '../../book-card/book-card';
+import { BookService } from '../../../services/book-service';
 import { finalize } from 'rxjs';
 
 @Component({
