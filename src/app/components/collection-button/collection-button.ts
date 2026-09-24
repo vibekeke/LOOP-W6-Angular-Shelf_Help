@@ -11,6 +11,8 @@ import { UserService } from '../../services/user-service';
 })
 export class CollectionButton {
   readonly book = input.required<Book>();
+  /** 'toggle' shows add/remove based on state; 'remove' is a remove-only action. */
+  readonly variant = input<'toggle' | 'remove'>('toggle');
   private readonly userService = inject(UserService);
 
   protected readonly inReadingList = computed(() =>

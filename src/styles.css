@@ -12,6 +12,7 @@
   --color-surface-alt: #E2ECE7;
   --color-ink: #1A2C26;
   --color-paper: #FFFFFF;
+  --color-danger-light: #FF9E9E;
 
   --font-heading: "Idiqlat", serif;
   --font-body: "Nunito Sans", sans-serif;
@@ -27,6 +28,7 @@
     --color-surface-alt: #182720;
     --color-ink: #eafcf3;
     --color-paper: #000000;
+    --color-danger-light: #862a2a;
   }
 }
 
