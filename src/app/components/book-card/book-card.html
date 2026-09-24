@@ -1,9 +1,9 @@
 
 
 <!-- Found a fun template at https://hyperui.dev/components/marketing/cards/ -->
-<a class="group">
+<a class="group flex flex-col flex-1">
   <div
-    class="relative overflow-hidden bg-paper shadow-md transform transition-transform group-hover:-translate-x-2 group-hover:-translate-y-2"
+    class="relative overflow-hidden bg-paper shadow-md flex flex-col flex-1 transform transition-transform group-hover:-translate-x-2 group-hover:-translate-y-2"
   >
     <!-- Saved indicator -->
       @if (inReadingList()) {
@@ -15,39 +15,52 @@
       }
       <!-- No hover -->
       <div
-        class="flex h-full flex-col transition-opacity"
+        class="flex flex-1 flex-col transition-opacity"
       >
           <img
               [alt]="book().title"
               [src]="book().coverImg"
               loading="lazy"
-              class="w-full min-h-0 flex-1 object-cover"
+              class="w-full object-cover"
           />
-          <div class="flex px-4 pt-4 @[39.5rem]:min-h-24">
-              <h4 class="text-xl font-medium line-clamp-3 text-ink">{{book().title}}</h4>
+          <div class="flex flex-1 px-4 pt-4">
+              <h4 class="text-xl font-medium line-clamp-3">{{book().title}}</h4>
           </div>
       </div>
 
       <!-- Hover -->
       <div class="absolute flex flex-col inset-0 bg-paper px-4 py-4 opacity-0 transition-opacity 
       group-hover:opacity-100">
-        <h3 [routerLink]="['/book-details', book().id]" class="mt-4 text-xl text-ink font-medium hover:underline">{{book().title}}</h3>
+          @if (isLoggedIn()) {
+            <h3 [routerLink]="['/book-details', book().id]" class="mt-4 text-xl font-medium hover:underline">{{book().title}}</h3>
+          } @else {
+            <h3 class="mt-4 text-xl font-medium">{{book().title}}</h3>
+          }
         <p class="mt-2 text-lg text-gray-500 text-bold italic">by {{book().author}}</p>
-        <p class="mt-5 text-ink mb-16 min-h-0 flex-1 overflow-hidden text-sm sm:text-base 
+        <p class="mt-5 mb-12 min-h-0 flex-1 overflow-hidden text-sm sm:text-base 
         mask-[linear-gradient(to_bottom,black_30%,transparent)]">
           {{book().blurb}}
         </p>
       </div>
-
-      <div class="px-4 py-5 shrink-0 flex justify-between relative items-center">
-          <a [routerLink]="['/book-details', book().id]" class="relative font-bold text-md text-ink
+      @if (isLoggedIn()) {
+        <div class="px-4 py-5 shrink-0 flex justify-between relative items-center">
+            <a [routerLink]="['/book-details', book().id]" class="relative font-bold text-md 
             after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:bg-current
             after:origin-right after:scale-x-0 after:transition-transform after:duration-250
             hover:after:origin-left hover:after:scale-x-100">
-          Read more</a>
-          
-          <app-collection-button [book]="book()" />
-
-        </div>
+              Read more</a>
+              
+            <app-collection-button [book]="book()" />
+            </div>
+          }
+      @else {
+          <div class="px-4 py-5 shrink-0">
+              <a [routerLink]="['/login', book().id]" class="text-center relative font-bold text-md 
+            after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:bg-current
+            after:origin-right after:scale-x-0 after:transition-transform after:duration-250
+            hover:after:origin-left hover:after:scale-x-100">
+              Log in to read more!</a>
+          </div>
+      }
   </div>
 </a>
