@@ -17,4 +17,8 @@ export class BookCard {
 
   protected readonly inReadingList = computed(() =>
     this.userService.isInCollection(this.book().id));
+
+  protected readonly isLoggedIn = computed(() => 
+    this.userService.isLoggedIn()
+  );
 }
