@@ -2,10 +2,10 @@
     <div class="bg-white">
         <a routerLink="/color-test" class="flex justify-end underline bg--surface">(Debug)Color Test</a>
     </div>
-    <div class="flex items-center justify-between px-6 py-5 bg-linear-to-br from-brand to-accent text-ink shadow-md">
+    <div class="flex sm:flex-col md:flex-row items-center justify-between px-6 py-5 bg-linear-to-br from-brand to-accent shadow-md">
         <div>
             <a routerLink="/">
-            <h1 class="link-underline pt-1 font-bold text-2xl tracking-[0.3em] text-ink">shelfHelp</h1>
+            <h1 class="link-underline pt-1 font-bold text-2xl tracking-[0.3em]">shelfHelp</h1>
             </a>
         </div>
         @if (userService.isLoggedIn()) {

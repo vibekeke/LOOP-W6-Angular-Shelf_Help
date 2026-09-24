@@ -1,6 +1,6 @@
 <div class="flex-1 flex-col items-center justify-center p-12 px-32">
     <div class="flex flex-row">
-        <a routerLink="/BookCatalogue" class="relative inline-flex items-center gap-2 font-bold text-lg text-ink
+        <a routerLink="/BookCatalogue" class="relative inline-flex items-center gap-2 font-bold text-lg 
             after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:bg-current
             after:origin-right after:scale-x-0 after:transition-transform after:duration-250
             hover:after:origin-left hover:after:scale-x-100">
@@ -19,7 +19,7 @@
                     [alt]="loadedBook.title"
                     [src]="loadedBook.coverImg"
                     loading="lazy"
-                    class="py-16 px-4"
+                    class="py-16"
                 />
                 <svg fill="#000000" height="40px" width="40px" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -40,7 +40,7 @@
                     </svg>
                     </div>
                 }
-            <div>
+            <div class="">
                 <h2 class="">{{loadedBook.title}}</h2>
 
                 <h5>Author: {{loadedBook.author}}</h5>

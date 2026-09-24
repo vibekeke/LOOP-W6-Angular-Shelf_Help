@@ -4,7 +4,7 @@
     (click)="removeFromReadingList()"
     [disabled]="isLoadingList()"
     [attr.aria-label]="'Remove ' + book().title + ' from your list'"
-    class="inline-flex items-center gap-1.5 rounded-sm bg-linear-to-br from-sage to-paper px-3 py-1.5 text-md font-semibold border border-brand-dark text-ink shadow-sm transition hover:-translate-y-1 hover:scale-105 hover:bg-sage hover:shadow-md hover:brightness-105 active:scale-95 cursor-pointer"
+    class="inline-flex items-center gap-1.5 rounded-sm bg-linear-to-br from-sage to-paper px-3 py-1.5 text-md font-semibold border border-brand-dark shadow-sm transition hover:-translate-y-1 hover:scale-105 hover:bg-sage hover:shadow-md hover:brightness-105 active:scale-95 cursor-pointer"
   >
     @if (isLoadingList()) {
       <svg class="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
@@ -24,7 +24,7 @@
     (click)="addToReadingList()"
     [disabled]="isLoadingList()"
     [attr.aria-label]="'Add ' + book().title + ' to your list'"
-    class="inline-flex items-center gap-1.5 rounded-sm bg-paper px-3 py-1.5 text-md font-medium border border-brand text-ink shadow-sm transition hover:-translate-y-1 hover:scale-105 hover:bg-sage hover:shadow-md active:scale-95 cursor-pointer"
+    class="inline-flex items-center gap-1.5 rounded-sm bg-paper px-3 py-1.5 text-md font-medium border border-brand shadow-sm transition hover:-translate-y-1 hover:scale-105 hover:bg-sage hover:shadow-md active:scale-95 cursor-pointer"
   >
     @if (isLoadingList()) {
       <svg class="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
