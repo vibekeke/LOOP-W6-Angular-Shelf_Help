@@ -46,6 +46,10 @@ export class UserService {
         this._user.set(null);
     }
 
+    isInCollection(bookId: number) : boolean {
+        return this._user()?.collection.includes(bookId) ?? false;
+    }
+
     addToCollection(bookId: number) : Observable<User> {
         const currentUser = this._user();
         if (!currentUser) {
