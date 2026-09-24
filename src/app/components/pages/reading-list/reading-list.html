@@ -1,1 +1,28 @@
-<p>reading-list works!</p>
+<div class="flex-1 flex-col items-center justify-center p-4 md:p-12 md:px-28">
+    <div class="text-center">
+        <h1>{{userService.user()?.username }}'s Reading List</h1>
+        
+        @if(userService.user()?.collection.length == 0) {
+            <p>You haven't collected any books!</p>
+        } @else {
+            <p>What a great collection!</p>
+        }
+        <div class="mt-16 grid grid-col gap-5">
+            @if (isLoading()) {
+                <span class="inline-flex items-center justify-center gap-2 pt-1">
+                <svg class="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+                </svg>
+                Loading books...
+                </span>
+            } @else if (errorMsg()) {
+                <p>{{ errorMsg() }}</p>
+            } @else {
+                @for (book of booksInCollection(); track book.id) {
+                <app-book-list-entry [book]="book" />
+                }
+            }
+        </div>
+    </div>
+</div>
