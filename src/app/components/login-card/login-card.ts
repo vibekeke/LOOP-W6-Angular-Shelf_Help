@@ -26,8 +26,8 @@ export class LoginCard {
     this.userService.login(name).pipe(
       finalize(()=> this.isLoading.set(false))
     ).subscribe({
-      next: () => this.router.navigateByUrl('/'),
-      error: (err) => console.error('Login failed', err), //TODO: add explanation to frontend.
+      next: () => this.router.navigateByUrl('/book-catalogue'),
+      error: (err) => console.error('Login failed', err),
     });
   }
 }
