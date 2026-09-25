@@ -1,7 +1,7 @@
 
 
 <!-- Found a fun template at https://hyperui.dev/components/marketing/cards/ -->
-<a class="group flex flex-col flex-1">
+<div class="group flex flex-col flex-1">
   <div
     class="relative overflow-hidden bg-paper shadow-md flex flex-col flex-1 transform transition-transform group-hover:-translate-x-2 group-hover:-translate-y-2"
   >
@@ -17,13 +17,14 @@
       <div
         class="flex flex-1 flex-col transition-opacity"
       >
-          <img
-              [alt]="book().title"
-              [src]="book().coverImg"
-              [routerLink]="['/book-details', book().id]"
-              loading="lazy"
-              class="w-full object-cover"
-          />
+          <a [routerLink]="['/book-details', book().id]" [attr.aria-label]="'View details for ' + book().title">
+              <img
+                  [alt]="book().title"
+                  [src]="book().coverImg"
+                  loading="lazy"
+                  class="w-full object-cover"
+              />
+          </a>
           <div class="flex flex-1 flex-col px-4 pt-4">
               <h4 class="text-xl font-medium line-clamp-3">{{book().title}}</h4>
               <p class="pt-2 text-sm text-gray-500 italic line-clamp-1">by {{book().author}}</p>
@@ -65,4 +66,4 @@
           </div>
       }
   </div>
-</a>
+</div>
