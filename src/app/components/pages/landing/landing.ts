@@ -3,9 +3,10 @@ import { UserService } from '../../../services/user-service';
 import { BookService } from '../../../services/book-service';
 import { finalize } from 'rxjs';
 import { BookCard } from '../../book-card/book-card';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [BookCard],
+  imports: [BookCard, RouterLink],
   selector: 'app-landing',
   styleUrl: './landing.css',
   templateUrl: './landing.html',

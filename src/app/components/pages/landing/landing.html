@@ -1,26 +1,26 @@
-<div class="flex-1 flex-col items-center justify-center text-center">
+<div class="flex flex-1 flex-col items-center justify-center text-center">
     <h1 class="pt-16">Welcome to ShelfHelp!</h1>
 
     <h5 class="text-accent p-6 lg:px-30">Discover our library of helpful books, add them to your reading list, and start improving YOUR life today! Get that bag.</h5>
 
-    <!--Max three entries-->
-    <div class="grid m-5 pt-14 grid-cols-[repeat(auto-fill,minmax(max(250px,calc((100%-5rem)/3)),1fr))] gap-8 lg:max-w-326">
-        @if (isLoading()) {
-        <span class="inline-flex items-center justify-center gap-2 pt-1">
-          <svg class="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
-              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
-              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
-          </svg>
-          Loading books...
-        </span>
-      } @else if (errorMsg()) {
-        <p class="">{{ errorMsg() }}</p>
-      } @else {
+    @if (isLoading()) {
+    <span class="inline-flex items-center justify-center gap-2 pt-1">
+        <svg class="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+        </svg>
+        Loading books...
+    </span>
+    } @else if (errorMsg()) {
+    <p>{{ errorMsg() }}</p>
+    } @else {
+    <!--Three random book entries-->
+    <div class="grid w-full my-5 pt-14 grid-cols-[repeat(auto-fill,minmax(max(250px,calc((100%-5rem)/3)),1fr))] gap-8 lg:max-w-326">
         @for (book of randomBooks(); track book.id) {
-          <app-book-card [book]="book" />
+        <app-book-card [book]="book" />
         }
-    }
     </div>
+    }
     @if(!isLoggedIn()) {
         <p class="mt-16">Something catch your attention?</p>
         <button routerLink="/login" class="inline-flex mt-4 mb-32 items-center gap-1.5 rounded-sm bg-paper px-3 py-1.5 text-md font-medium border border-brand shadow-sm transition hover:-translate-y-1 hover:scale-105 hover:bg-sage hover:shadow-md active:scale-95 cursor-pointer">
